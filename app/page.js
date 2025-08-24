@@ -1,265 +1,615 @@
-import React from "react";
-
-import "./Hexagon.css"; // We'll create this CSS file next
+"use client"
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-
-function page() {
-  const links = [
-    "Home",
-    "About Me",
-    "Service",
-    "Skills",
-    "Portfolio",
-    "Feedback",
-    "Contact",
-  ];
-   const outerHexagons = [
-    'EMAIL MARKETING',
-    'SOCIAL MEDIA',
-    'SEO MARKETING',
-    'GRAPHIC DESIGN',
-    'PPC MARKETING',
-    'VIDEO MARKETING'
-  ];
-  const logoUrl = "/images/logo.png"; // Path to your company
-const frontendSkills = [
-  { name: 'HTML', percent: 98, icon: 'https://img.icons8.com/color/48/html-5.png' },
-  { name: 'CSS', percent: 95, icon: 'https://img.icons8.com/color/48/css3.png' },
-  { name: 'JavaScript', percent: 90, icon: 'https://img.icons8.com/color/48/javascript.png' },
-  { name: 'React', percent: 92, icon: 'https://img.icons8.com/color/48/react-native.png' },
-  { name: 'Tailwind', percent: 88, icon: 'https://img.icons8.com/color/48/tailwind_css.png' },
-  { name: 'Bootstrap', percent: 85, icon: 'https://img.icons8.com/color/48/bootstrap.png' },
-];
-
-const backendSkills = [
-  { name: 'Node.js', percent: 89, icon: 'https://img.icons8.com/color/48/nodejs.png' },
-  { name: 'Express.js', percent: 87, icon: 'https://img.icons8.com/ios-filled/50/000000/express-js.png' },
-  { name: 'MongoDB', percent: 82, icon: 'https://img.icons8.com/color/48/mongodb.png' },
-  { name: 'MySQL', percent: 78, icon: 'https://img.icons8.com/fluency/48/mysql-logo.png' },
-  { name: 'REST API', percent: 90, icon: 'https://img.icons8.com/external-flat-icons-inmotus-design/67/external-api-digital-marketing-flat-icons-inmotus-design.png' },
-  { name: 'JWT Auth', percent: 85, icon: 'https://img.icons8.com/ios-filled/50/000000/jwt.png' },
-];
-
+import { 
+  Github, 
+  Linkedin, 
+  Facebook, 
+  Instagram, 
+  Download, 
+  Mail,     // ✅ keep this one
+  Phone, 
+  MapPin,
+  ExternalLink,
+  Code,
+  Palette,
+  Users,
+  Award,
+  Calendar,
+  Star,
+  Home, 
+  User, 
+  Wrench, 
+  Zap, 
+  Folder
  
+} from "lucide-react";
+
+
+function Page() {
+  const [activeSection, setActiveSection] = useState("Home");
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  // Add scroll function
+  const scrollToSection = (sectionName) => {
+    setActiveSection(sectionName);
+    
+    const sectionId = sectionName.toLowerCase().replace(/\s+/g, '-');
+    const element = document.getElementById(sectionId);
+    
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
+  const links = [
+    { name: "Home", icon: Home },
+    { name: "About Me", icon: User },
+    { name: "Services", icon: Wrench },
+    { name: "Skills", icon: Zap },
+    { name: "Portfolio", icon: Folder },
+    { name: "Contact", icon: Mail },
+  ];
+  
+
+  const services = [
+    {
+      title: "Web Development",
+      description: "Creating responsive and interactive websites with modern technologies",
+      icon: <Code className="w-8 h-8" />,
+      color: "from-blue-500 to-cyan-500"
+    },
+    {
+      title: "UI/UX Design",
+      description: "Designing user-friendly interfaces with focus on user experience",
+      icon: <Palette className="w-8 h-8" />,
+      color: "from-purple-500 to-pink-500"
+    },
+    {
+      title: "Consulting",
+      description: "Providing expert advice on web technologies and best practices",
+      icon: <Users className="w-8 h-8" />,
+      color: "from-green-500 to-emerald-500"
+    }
+  ];
+
+  const frontendSkills = [
+    { name: 'HTML', percent: 98, icon: 'https://img.icons8.com/color/48/html-5.png' },
+    { name: 'CSS', percent: 95, icon: 'https://img.icons8.com/color/48/css3.png' },
+    { name: 'JavaScript', percent: 90, icon: 'https://img.icons8.com/color/48/javascript.png' },
+    { name: 'React', percent: 92, icon: 'https://img.icons8.com/color/48/react-native.png' },
+    { name: 'Tailwind', percent: 88, icon: 'https://img.icons8.com/color/48/tailwind_css.png' },
+    { name: 'Bootstrap', percent: 85, icon: 'https://img.icons8.com/color/48/bootstrap.png' },
+  ];
+
+  const backendSkills = [
+    { name: 'Node.js', percent: 89, icon: 'https://img.icons8.com/color/48/nodejs.png' },
+    { name: 'Express.js', percent: 87, icon: 'https://img.icons8.com/ios-filled/50/000000/express-js.png' },
+    { name: 'MongoDB', percent: 82, icon: 'https://img.icons8.com/color/48/mongodb.png' },
+    { name: 'MySQL', percent: 78, icon: 'https://img.icons8.com/fluency/48/mysql-logo.png' },
+    { name: 'REST API', percent: 90, icon: 'https://img.icons8.com/external-flat-icons-inmotus-design/67/external-api-digital-marketing-flat-icons-inmotus-design.png' },
+    { name: 'JWT Auth', percent: 85, icon: 'https://img.icons8.com/ios-filled/50/000000/jwt.png' },
+  ];
+
+  const socialLinks = [
+    { icon: <Facebook className="w-5 h-5" />, href: "#", color: "hover:bg-blue-600" },
+    { icon: <Instagram className="w-5 h-5" />, href: "#", color: "hover:bg-pink-600" },
+    { icon: <Linkedin className="w-5 h-5" />, href: "#", color: "hover:bg-blue-700" },
+    { icon: <Github className="w-5 h-5" />, href: "#", color: "hover:bg-gray-800" },
+  ];
+
   return (
-    <div className="bg-white min-h-screen w-full flex flex-row">
-      {/* Sidebar - 20% */}
-      <div className=" w-[0%] overflow-hidden md:overflow-visible md:w-[20%] fixed top-0 left-0 bg-[#EFEFEF] h-screen  md:p-6 shadow-lg ">
-        <div className="text-green-700 font-bold text-xl mb-6">
-          <Image src="/images/Profilelogo1.png" alt="Logo" width={300} height={100} />
-
-
-
+    <div className="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen w-full flex flex-row">
+      {/* Sidebar */}
+      <div className="w-[0%] overflow-hidden md:overflow-visible md:w-[20%] fixed top-0 left-0 bg-white/80 backdrop-blur-md h-screen md:p-6 shadow-xl border-r border-gray-200 z-50">
+        <div className="text-center mb-8">
+          <Image 
+            src="/images/Profilelogo1.png" 
+            alt="Logo" 
+            width={200} 
+            height={80} 
+            className="mx-auto"
+          />
         </div>
-        <ul className="space-y-4">
-          {links.map((link, idx) => (
-            <li
-              key={idx}
-              className={`p-2 px-4 rounded-lg cursor-pointer ${
-                idx === 0
-                  ? "bg-green-700 text-white"
-                  : "text-gray-700 hover:bg-green-700"
-              }`}
-            >
-              {link}
-            </li>
-          ))}
-        </ul>
+        
+        <nav className="space-y-2">
+        {links.map((link, idx) => (
+  <button
+    key={idx}
+    onClick={() => setActiveSection(link.name)}
+    className={`w-full p-3 px-4 rounded-xl cursor-pointer transition-all duration-300 flex items-center gap-3 ${
+      activeSection === link.name
+        ? "bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg transform scale-105"
+        : "text-gray-700 hover:bg-green-50 hover:text-green-700"
+    }`}
+  >
+    <span className="text-lg">
+      <link.icon className="w-5 h-5" />
+    </span>
+    <span className="font-medium">{link.name}</span>
+  </button>
+))}
+
+        </nav>
+
+        {/* Contact Info */}
+        <div className="mt-8 p-4 bg-gray-50 rounded-xl">
+          <h4 className="font-semibold text-gray-800 mb-3">Quick Contact</h4>
+          <div className="space-y-2 text-sm">
+            <div className="flex items-center gap-2 text-gray-600">
+              <Mail className="w-4 h-4" />
+              <span>hameed@example.com</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-600">
+              <Phone className="w-4 h-4" />
+              <span>+1 234 567 890</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-600">
+              <MapPin className="w-4 h-4" />
+              <span>Pakistan</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Main Content - 80% */}
-      <div className="md:w-[80%] w-[100%] md:ml-[20%]    flex flex-col items-center justify-between  py-10 bg-[#f5fcfc] min-h-[80vh]">
+      {/* Main Content */}
+      <div className="md:w-[80%] w-[100%] md:ml-[20%] flex flex-col min-h-screen">
         {/* Hero Section */}
-        <div className="flex  md:flex-row flex-col-reverse justify-between items-center">
-          <div className="md:w-1/2 text-center md:text-left space-y-4">
-            <h3 className="text-gray-700 text-lg">👋 Hi I’m Hameed</h3>
-            <h1 className="text-3xl md:block hidden sm:text-4xl font-extrabold text-black mb-2">
-              A ReactJS & 
-              <span className="text-green-700 text-3xl sm:text-4xl font-extrabold"> NextJS Developer</span>
-            </h1>
-            <h1 className="text-4xl md:hidden block font-bold">
-              A ReactJS & NextJS
-              <span className="text-green-700 italic"> Developer</span>
-            </h1>
-            <p className="text-gray-500 text-justify md:p-0 px-4 max-w-md">
-              I am a passionate React.js and Next.js developer with a keen eye
-              for detail and a love for creating dynamic, user-friendly web
-              applications. My expertise lies in building scalable and efficient
-              front-end solutions that enhance user experience and drive
-              engagement.
-            </p>
+        <section className="flex md:flex-row flex-col-reverse justify-between items-center py-20 px-8 md:px-16">
+          <div className="md:w-1/2 text-center md:text-left space-y-6">
+            <div className={`transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <h3 className="text-gray-600 text-lg font-medium"> 👋Hi, I'm Hameed</h3>
+              <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-4 leading-tight">
+           
+                <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                  ReactJS & NextJS  
+                </span>
+                Developer
+              </h1>
+              <p className="text-gray-600 text-lg leading-relaxed max-w-lg">
+                I am a passionate React.js and Next.js developer with a keen eye for detail 
+                and a love for creating dynamic, user-friendly web applications. My expertise 
+                lies in building scalable and efficient front-end solutions.
+              </p>
+            </div>
             
-            <div className="mt-6">
-              <h4 className="text-gray-600 mb-2">Follow Me On</h4>
-              <div className="flex flex-row md:justify-start justify-center gap-4">
-                <div className=" text-black w-10 bg-white border-1 border-black p-1 rounded-sm flex items-center justify-center">
-                  <i className="ri-facebook-fill text-2xl"></i>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+                <Download className="w-5 h-5" />
+                Download CV
+              </button>
+              <button className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-full font-semibold hover:bg-green-600 hover:text-white transition-all duration-300">
+                View Portfolio
+              </button>
+            </div>
+
+            <div className="pt-6">
+              <h4 className="text-gray-600 mb-4 font-medium">Follow Me On</h4>
+              <div className="flex gap-4 justify-center md:justify-start">
+                {socialLinks.map((social, idx) => (
+                  <a
+                    key={idx}
+                    href={social.href}
+                    className={`w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 ${social.color} transition-all duration-300 hover:scale-110 hover:text-white`}
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+          
+          <div className="md:w-1/2 flex justify-center mb-8 md:mb-0">
+            <div className={`transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full blur-2xl opacity-30 animate-pulse"></div>
+                <img
+                  src="/images/profile2.png"
+                  alt="Profile"
+                  className="relative w-80 h-80 rounded-full border-4 border-white shadow-2xl object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section className="py-20 px-8 md:px-16 bg-white/50">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                About <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Me</span>
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto rounded-full"></div>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="space-y-6">
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  I am Hameed Gul, a dedicated React.js and Next.js developer with a strong
+                  passion for building high-quality web applications. With a solid
+                  foundation in JavaScript and a keen eye for design, I strive to
+                  create seamless user experiences.
+                </p>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  My expertise includes developing responsive and interactive web
+                  applications using React.js and Next.js. I have a strong understanding
+                  of state management, component lifecycle, and performance optimization.
+                </p>
+                
+                <div className="flex gap-4">
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <Award className="w-5 h-5 text-green-600" />
+                    <span>5+ Years Experience</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <Star className="w-5 h-5 text-green-600" />
+                    <span>50+ Projects</span>
+                  </div>
                 </div>
-                <div className=" text-black w-10 bg-white border-1 border-black p-1 rounded-sm flex items-center justify-center ">
-                  <i className="ri-instagram-line text-2xl"></i>
-                </div>
-                <div className="  text-black w-10 bg-white border-1 border-black p-1 rounded-sm flex items-center justify-center">
-                  <i className="ri-linkedin-fill text-2xl"></i>
-                </div>
-                <div className="  text-black w-10 bg-white border-1 border-black p-1 rounded-sm flex items-center justify-center ">
-                  <i className="ri-github-fill text-2xl"></i>
+              </div>
+              
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl">
+                <h3 className="text-2xl font-bold text-gray-800 mb-6">My Expertise</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-700">Frontend Development</span>
+                    <span className="text-green-600 font-semibold">95%</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full" style={{width: '95%'}}></div>
+                  </div>
+                  
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-700">Backend Development</span>
+                    <span className="text-green-600 font-semibold">85%</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full" style={{width: '85%'}}></div>
+                  </div>
+                  
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-700">UI/UX Design</span>
+                    <span className="text-green-600 font-semibold">80%</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full" style={{width: '80%'}}></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          {/* <i class="ri-facebook-fill"></i>, <i class="ri-instagram-line"></i>, <i class="ri-linkedin-fill"></i>, <i class="ri-github-fill"></i> */}
-          <div className="md:w-1/2 flex justify-center mt-8 md:mt-0">
-            <img
-              src="/images/profile2.png"
-              alt="Profile"
-              className="w-80 rounded-full border-2 border-green-700"
-            />
-          </div>
-        </div>
-        {/* About Section */}
-        <section>
-          <div className="mt-10 w-full md:px-18 rounded-lg shadow-md">
-           <div>
-             <h2 className="text-green-700 text-3xl sm:text-4xl font-extrabold ">About Me</h2>
-           </div>
-           <div className=" flex flex-col md:flex-row items-center justify-center gap-4">
-             <p className="text-gray-600 text-justify">
-              I am Hameed Gul a dedicated React.js and Next.js developer with a strong
-              passion for building high-quality web applications. With a solid
-              foundation in JavaScript and a keen eye for design, I strive to
-              create seamless user experiences. My journey in web development has
-              equipped me with the skills to tackle complex challenges and deliver
-              innovative solutions. I am always eager to learn and adapt to new
-              technologies, ensuring that I stay at the forefront of the ever-evolving
-              web development landscape.
-             
-            </p>
-            <p className="text-gray-600 text-justify">
-               My expertise includes developing responsive and interactive web
-              applications using React.js and Next.js. I have a strong understanding
-              of state management, component lifecycle, and performance optimization.
-              I am proficient in integrating APIs, managing application state with
-              tools like Redux, and implementing best practices for code quality and
-              maintainability. I am also experienced in collaborating with cross-functional
-              teams to deliver projects on time and within scope.
-            </p>
-           </div>
-           <div className="flex gap-4 mt-4">
-              <button className="bg-green-700 text-white  px-4 py-2 rounded-full">
-                Download CV
-              </button>
+        </section>
+
+        {/* Skills Section */}
+        <section className="py-20 px-8 md:px-16">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <p className="text-green-600 font-medium mb-2">Tech Stack</p>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                Let's Explore My <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Skills</span>
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto rounded-full"></div>
             </div>
-          
+
+            {/* Frontend Skills */}
+            <div className="mb-16">
+              <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">Frontend Technologies</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                {frontendSkills.map((skill, i) => (
+                  <div key={i} className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div className="flex flex-col items-center text-center">
+                      <img src={skill.icon} alt={skill.name} className="w-12 h-12 mb-4 group-hover:scale-110 transition-transform duration-300" />
+                      <h4 className="font-semibold text-gray-800 mb-2">{skill.name}</h4>
+                      <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+                        <div 
+                          className="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full transition-all duration-1000" 
+                          style={{width: `${skill.percent}%`}}
+                        ></div>
+                      </div>
+                      <span className="text-sm font-medium text-green-600">{skill.percent}%</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Backend Skills */}
+            <div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">Backend Technologies</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                {backendSkills.map((skill, i) => (
+                  <div key={i} className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div className="flex flex-col items-center text-center">
+                      <img src={skill.icon} alt={skill.name} className="w-12 h-12 mb-4 group-hover:scale-110 transition-transform duration-300" />
+                      <h4 className="font-semibold text-gray-800 mb-2">{skill.name}</h4>
+                      <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+                        <div 
+                          className="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full transition-all duration-1000" 
+                          style={{width: `${skill.percent}%`}}
+                        ></div>
+                      </div>
+                      <span className="text-sm font-medium text-green-600">{skill.percent}%</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
-              {/* user:hamidkhan31590 */}
-              {/* password:zaWiScEMzp9urVOs */}
-              {/* npm install mongodb */}
-              {/* mongodb+srv://hamidkhan31590:zaWiScEMzp9urVOs@cluster0.e0aaqpj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0 */}
-
-        {/* Skills Section */}
-        {/* <section className="mt-10 w-full md:px-18 rounded-lg shadow-md">
-          <h2 className="text-green-700 text-3xl sm:text-4xl font-extrabold mb-6">Skills</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-              <h3 className="text-gray-700 font-semibold">React.js</h3>
-              <p className="text-gray-500">Building dynamic user interfaces</p>
+        {/* Services Section */}
+        <section className="py-20 px-8 md:px-16 bg-white/50">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                My <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Services</span>
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto rounded-full"></div>
             </div>
-            <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-              <h3 className="text-gray-700 font-semibold">Next.js</h3>
-              <p className="text-gray-500">Server-side rendering and static site generation</p>
-            </div>
-            <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-              <h3 className="text-gray-700 font-semibold">JavaScript</h3>
-              <p className="text-gray-500">Core programming language for web development</p>
-            </div>
-            <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-              <h3 className="text-gray-700 font-semibold">CSS & HTML</h3>
-              <p className="text-gray-500">Styling and structuring web pages</p>
-            </div>
-          </div>      
-        </section> */}
- <section className="bg-[#f5fcfc] w-full  py-16 px-18 text-center">
-      <p className="text-gray-500 mb-2 text-sm">Tech Stack</p>
-      <h2 className="text-3xl md:text-4xl font-bold mb-10">Let’s Explore My Skills</h2>
-
-      {/* Frontend */}
-      <h3 className="text-xl font-semibold mb-6">Frontend</h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full mx-auto mb-12">
-        {frontendSkills.map((skill, i) => (
-          <div key={i} className="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center">
-            <img src={skill.icon} alt={skill.name} className="w-12 h-12 mb-4" />
-            <p className="text-lg font-medium mb-2">{skill.name}</p>
-            <div className="bg-green-700 text-white px-4 py-1 rounded-full text-sm font-semibold w-full">
-              {skill.percent}%
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              {services.map((service, idx) => (
+                <div key={idx} className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    {service.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-4">{service.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
-      </div>
+        </section>
 
-      {/* Backend */}
-      <h3 className="text-xl font-semibold mb-6">Backend</h3>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-        {backendSkills.map((skill, i) => (
-          <div key={i} className="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center">
-            <img src={skill.icon} alt={skill.name} className="w-12 h-12 mb-4" />
-            <p className="text-lg font-medium mb-2">{skill.name}</p>
-            <div className="bg-green-700 text-white px-4 py-1 rounded-full text-sm font-semibold w-full">
-              {skill.percent}%
+          {/* Portfolio Section */}
+          <section id="portfolio" className="py-20 px-8 md:px-16">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <p className="text-green-600 font-medium mb-2">My Work</p>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                Featured <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Projects</span>
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto rounded-full"></div>
+            </div>
+
+            {/* Portfolio Filter */}
+            <div className="flex justify-center mb-12">
+              <div className="flex flex-wrap gap-4 bg-white p-2 rounded-full shadow-lg">
+                {['All', 'Web App', 'Mobile App', 'UI/UX', 'E-commerce'].map((filter, idx) => (
+                  <button
+                    key={idx}
+                    className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                      idx === 0 
+                        ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg'
+                        : 'text-gray-600 hover:bg-green-50 hover:text-green-700'
+                    }`}
+                  >
+                    {filter}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Portfolio Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Project 1 */}
+              <div className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
+                <div className="relative overflow-hidden">
+                  <div className="w-full h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                    <Code className="w-16 h-16 text-white" />
+                  </div>
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="flex gap-4">
+                      <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
+                        <ExternalLink className="w-5 h-5" />
+                      </button>
+                      <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
+                        <Github className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">E-Commerce Platform</h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    A full-stack e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product management, and payment integration.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {['React', 'Node.js', 'MongoDB', 'Stripe'].map((tech, idx) => (
+                      <span key={idx} className="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Project 2 */}
+              <div className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
+                <div className="relative overflow-hidden">
+                  <div className="w-full h-48 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+                    <Palette className="w-16 h-16 text-white" />
+                  </div>
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="flex gap-4">
+                      <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
+                        <ExternalLink className="w-5 h-5" />
+                      </button>
+                      <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
+                        <Github className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">Task Management App</h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {['Next.js', 'TypeScript', 'Prisma', 'Socket.io'].map((tech, idx) => (
+                      <span key={idx} className="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Project 3 */}
+              <div className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
+                <div className="relative overflow-hidden">
+                  <div className="w-full h-48 bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+                    <Users className="w-16 h-16 text-white" />
+                  </div>
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="flex gap-4">
+                      <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
+                        <ExternalLink className="w-5 h-5" />
+                      </button>
+                      <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
+                        <Github className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">Social Media Dashboard</h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    A comprehensive social media analytics dashboard with data visualization, reporting tools, and multi-platform integration.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {['React', 'D3.js', 'Express', 'PostgreSQL'].map((tech, idx) => (
+                      <span key={idx} className="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Project 4 */}
+              <div className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
+                <div className="relative overflow-hidden">
+                  <div className="w-full h-48 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                    <Zap className="w-16 h-16 text-white" />
+                  </div>
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="flex gap-4">
+                      <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
+                        <ExternalLink className="w-5 h-5" />
+                      </button>
+                      <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
+                        <Github className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">Weather App</h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    A modern weather application with location-based forecasts, interactive maps, and personalized weather alerts.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {['React Native', 'OpenWeather API', 'Redux', 'Firebase'].map((tech, idx) => (
+                      <span key={idx} className="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Project 5 */}
+              <div className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
+                <div className="relative overflow-hidden">
+                  <div className="w-full h-48 bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center">
+                    <Folder className="w-16 h-16 text-white" />
+                  </div>
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="flex gap-4">
+                      <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
+                        <ExternalLink className="w-5 h-5" />
+                      </button>
+                      <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
+                        <Github className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">File Management System</h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    A cloud-based file management system with drag-and-drop upload, file sharing, and advanced search capabilities.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {['Vue.js', 'AWS S3', 'Node.js', 'MongoDB'].map((tech, idx) => (
+                      <span key={idx} className="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Project 6 */}
+              <div className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
+                <div className="relative overflow-hidden">
+                  <div className="w-full h-48 bg-gradient-to-br from-teal-500 to-green-600 flex items-center justify-center">
+                    <Wrench className="w-16 h-16 text-white" />
+                  </div>
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="flex gap-4">
+                      <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
+                        <ExternalLink className="w-5 h-5" />
+                      </button>
+                      <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
+                        <Github className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">AI Chat Assistant</h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    An intelligent chatbot powered by machine learning with natural language processing and context awareness.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {['Python', 'TensorFlow', 'React', 'FastAPI'].map((tech, idx) => (
+                      <span key={idx} className="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* View More Button */}
+            <div className="text-center mt-12">
+              <button className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 mx-auto">
+                <Folder className="w-5 h-5" />
+                View All Projects
+              </button>
             </div>
           </div>
-        ))}
-      </div>
-    </section>
-     {/* Services Section   */}
-
-        <section className="mt-10 w-full md:px-18 rounded-lg shadow-md">
-
-
-          <h2 className="text-green-700 text-3xl sm:text-4xl font-extrabold mb-6">Services</h2>  
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-              <h3 className="text-gray-700 font-semibold">Web Development</h3>
-              <p className="text-gray-500">Creating responsive and interactive websites</p>
-            </div>
-            <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-              <h3 className="text-gray-700 font-semibold">UI/UX Design</h3>
-              <p className="text-gray-500">Designing user-friendly interfaces</p>
-            </div>
-            <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-              <h3 className="text-gray-700 font-semibold">Consulting</h3>
-              <p className="text-gray-500">Providing expert advice on web technologies</p>
-            </div>  
-          </div>
-
-
-
-
-
-
-
-          </section>
-
-      <div className="hexagon-grid-container">
-      <div className="hexagon-grid">
-        {/* Center Hexagon (for logo) */}
-        <div className="hexagon center-hexagon">
-          {<img src="/logo.png" alt="Company Logo" style={{width: '80%'}} /> || <div className="placeholder-logo">LOGO</div>}
-        </div>
-        
-        {/* Outer Hexagons */}
-        {outerHexagons.map((text, index) => (
-          <div key={index} className={`hexagon outer-hex outer-hex-${index+1}`}>
-            <div className="hexagon-content">{text}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-    
+        </section>
       </div>
     </div>
   );
 }
 
-export default page;
+export default Page;
