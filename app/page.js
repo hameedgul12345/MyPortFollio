@@ -21,7 +21,7 @@ import {
   User, 
   Wrench, 
   Zap, 
-  Folder
+  Folder,Menu,X
  
 } from "lucide-react";
 
@@ -29,7 +29,8 @@ import {
 function Page() {
   const [activeSection, setActiveSection] = useState("Home");
   const [isLoaded, setIsLoaded] = useState(false);
-
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Add this state
+  
   useEffect(() => {
     setIsLoaded(true);
   }, []);
@@ -39,11 +40,22 @@ function Page() {
     setIsLoaded(true);
   }, []);
 
-  // Add scroll function
-  const scrollToSection = (sectionName) => {
+
+   // Update your scrollToSection function
+   const scrollToSection = (sectionName) => {
     setActiveSection(sectionName);
     
-    const sectionId = sectionName.toLowerCase().replace(/\s+/g, '-');
+    // Map section names to their IDs
+    const sectionMap = {
+      "Home": "home",
+      "About Me": "about",
+      "Services": "services", 
+      "Skills": "skills",
+      "Portfolio": "portfolio",
+      "Contact": "contact"
+    };
+    
+    const sectionId = sectionMap[sectionName];
     const element = document.getElementById(sectionId);
     
     if (element) {
@@ -112,6 +124,81 @@ function Page() {
 
   return (
     <div className="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen w-full flex flex-row">
+      
+       {/* Mobile Navbar */}
+       <div className="md:hidden fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-200">
+          <div className="flex items-center justify-between px-4 py-3">
+            {/* Logo */}
+            <div className="flex items-center">
+              <Image 
+                src="/images/Profilelogo1.png" 
+                alt="Logo" 
+                width={120} 
+                height={50} 
+                className="h-8 w-auto"
+              />
+            </div>
+            
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6 text-gray-700" />
+              ) : (
+                <Menu className="w-6 h-6 text-gray-700" />
+              )}
+            </button>
+          </div>
+  
+          {/* Mobile Menu Dropdown */}
+          {isMobileMenuOpen && (
+            <div className="bg-white border-t border-gray-200 shadow-lg">
+              <nav className="px-4 py-2">
+                {links.map((link, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      setActiveSection(link.name);
+                      setIsMobileMenuOpen(false);
+                      scrollToSection(link.name);
+                    }}
+                    className={`w-full p-3 px-4 rounded-xl cursor-pointer transition-all duration-300 flex items-center gap-3 mb-2 ${
+                      activeSection === link.name
+                        ? "bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg"
+                        : "text-gray-700 hover:bg-green-50 hover:text-green-700"
+                    }`}
+                  >
+                    <span className="text-lg">
+                      <link.icon className="w-5 h-5" />
+                    </span>
+                    <span className="font-medium">{link.name}</span>
+                  </button>
+                ))}
+              </nav>
+              
+              {/* Mobile Contact Info */}
+              <div className="px-4 py-4 bg-gray-50 border-t border-gray-200">
+                <h4 className="font-semibold text-gray-800 mb-3 text-sm">Quick Contact</h4>
+                <div className="space-y-2 text-xs">
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <Mail className="w-3 h-3" />
+                    <span>hameed@example.com</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <Phone className="w-3 h-3" />
+                    <span>+1 234 567 890</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <MapPin className="w-3 h-3" />
+                    <span>Pakistan</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       {/* Sidebar */}
       <div className="w-[0%] overflow-hidden md:overflow-visible md:w-[20%] fixed top-0 left-0 bg-white/80 backdrop-blur-md h-screen md:p-6 shadow-xl border-r border-gray-200 z-50">
         <div className="text-center mb-8">
@@ -128,7 +215,11 @@ function Page() {
         {links.map((link, idx) => (
   <button
     key={idx}
-    onClick={() => setActiveSection(link.name)}
+    onClick={() => {
+      setActiveSection(link.name);
+      setIsMobileMenuOpen(false);
+      scrollToSection(link.name);
+    }}
     className={`w-full p-3 px-4 rounded-xl cursor-pointer transition-all duration-300 flex items-center gap-3 ${
       activeSection === link.name
         ? "bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg transform scale-105"
@@ -167,21 +258,26 @@ function Page() {
       {/* Main Content */}
       <div className="md:w-[80%] w-[100%] md:ml-[20%] flex flex-col min-h-screen">
         {/* Hero Section */}
-        <section className="flex md:flex-row flex-col-reverse justify-between items-center py-20 px-8 md:px-16">
+        <section id="home" className="flex md:flex-row flex-col-reverse justify-between items-center py-20 px-8 md:px-16">
           <div className="md:w-1/2 text-center md:text-left space-y-6">
             <div className={`transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <h3 className="text-gray-600 text-lg font-medium"> 👋Hi, I'm Hameed</h3>
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-4 leading-tight">
-           
-                <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-                  ReactJS & NextJS  
-                </span>
-                Developer
-              </h1>
-              <p className="text-gray-600 text-lg leading-relaxed max-w-lg">
-                I am a passionate React.js and Next.js developer with a keen eye for detail 
-                and a love for creating dynamic, user-friendly web applications. My expertise 
-                lies in building scalable and efficient front-end solutions.
+              <h1
+                className="
+                  bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent
+                  text-4xl sm:text-5xl md:text-6xl font-extrabold 
+                  leading-tight tracking-tight 
+                "
+>
+  Full Stack Web
+  <br />
+ <span className="text-black">Developer</span>
+</h1>
+
+<p className="text-gray-600 text-lg leading-relaxed max-w-lg">
+                I am a full stack web developer with a passion for creating beautiful and functional websites. 
+                Specializing in React.js, Next.js, and modern web technologies to build scalable applications 
+                that deliver exceptional user experiences.
               </p>
             </div>
             
@@ -226,7 +322,7 @@ function Page() {
         </section>
 
         {/* About Section */}
-        <section className="py-20 px-8 md:px-16 bg-white/50">
+        <section id="about" className="py-20 px-8 md:px-16 bg-white/50">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
@@ -294,7 +390,7 @@ function Page() {
         </section>
 
         {/* Skills Section */}
-        <section className="py-20 px-8 md:px-16">
+        <section id="skills" className="py-20 px-8 md:px-16">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <p className="text-green-600 font-medium mb-2">Tech Stack</p>
@@ -351,7 +447,7 @@ function Page() {
         </section>
 
         {/* Services Section */}
-        <section className="py-20 px-8 md:px-16 bg-white/50">
+        <section id="services" className="py-20 px-8 md:px-16 bg-white/50">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
@@ -607,8 +703,191 @@ function Page() {
             </div>
           </div>
         </section>
+        // ... existing code ...
+
+        {/* Contact Section */}
+        <section id="contact" className="py-20 px-8 md:px-16 bg-white/50">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <p className="text-green-600 font-medium mb-2">Get In Touch</p>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                Let's <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Connect</span>
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12">
+              {/* Contact Information */}
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-6">Get In Touch</h3>
+                  <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out!
+                  </p>
+                </div>
+
+                {/* Contact Details */}
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl flex items-center justify-center">
+                      <Mail className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Email</h4>
+                      <p className="text-gray-600">hameed@example.com</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl flex items-center justify-center">
+                      <Phone className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Phone</h4>
+                      <p className="text-gray-600">+1 234 567 890</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl flex items-center justify-center">
+                      <MapPin className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Location</h4>
+                      <p className="text-gray-600">Pakistan</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Social Links */}
+                <div>
+                  <h4 className="font-semibold text-gray-800 mb-4">Follow Me</h4>
+                  <div className="flex gap-4">
+                    {socialLinks.map((social, idx) => (
+                      <a
+                        key={idx}
+                        href={social.href}
+                        className={`w-12 h-12 bg-white rounded-xl shadow-lg flex items-center justify-center text-gray-600 ${social.color} transition-all duration-300 hover:scale-110 hover:text-white`}
+                      >
+                        {social.icon}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact Form */}
+              <div className="bg-white p-8 rounded-2xl shadow-lg">
+                <h3 className="text-2xl font-bold text-gray-800 mb-6">Send Message</h3>
+                <form className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
+                        placeholder="John Doe"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
+                        placeholder="john@example.com"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                      Subject
+                    </label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
+                      placeholder="Project Inquiry"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="6"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 resize-none"
+                      placeholder="Tell me about your project..."
+                      required
+                    ></textarea>
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-4 rounded-xl font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    <Mail className="w-5 h-5" />
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="bg-gray-800 text-white py-12 px-8 md:px-16">
+          <div className="max-w-6xl mx-auto text-center">
+            <div className="mb-8">
+              <Image 
+                src="/images/Profilelogo1.png" 
+                alt="Logo" 
+                width={200} 
+                height={80} 
+                className="mx-auto mb-4"
+              />
+              <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+                A passionate React.js and Next.js developer dedicated to creating exceptional web experiences.
+              </p>
+            </div>
+            
+            <div className="flex justify-center gap-6 mb-8">
+              {socialLinks.map((social, idx) => (
+                <a
+                  key={idx}
+                  href={social.href}
+                  className={`w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-gray-300 ${social.color} transition-all duration-300 hover:scale-110`}
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
+            
+            <div className="border-t border-gray-700 pt-8">
+              <p className="text-gray-400">
+                © 2024 Hameed Gul. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
+  
   );
 }
 
