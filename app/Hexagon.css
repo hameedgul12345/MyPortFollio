@@ -1,0 +1,96 @@
+.hexagon-grid-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.hexagon-grid {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.hexagon {
+  --hex-size: 160px;
+  width: var(--hex-size);
+  height: calc(var(--hex-size) * 1.1547); /* height = width * 2/√3 */
+  background-color: #64C7CC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: absolute;
+}
+
+.hexagon:hover {
+  background-color: #4aa8ac;
+  transform: scale(1.05);
+}
+
+.hexagon-content {
+  padding: 0 15px;
+  font-size: 14px;
+}
+
+/* Center Hexagon */
+.center-hexagon {
+  --hex-size: 140px; /* Slightly larger */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #3a9fa5;
+  z-index: 2;
+}
+
+.placeholder-logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Outer Hexagons */
+.outer-hex {
+  --hex-size: 100px;
+  z-index: 1;
+}
+
+/* Position outer hexagons in a circle */
+.outer-hex-1 { top: 10%; left: 50%; transform: translateX(-50%); }
+.outer-hex-2 { top: 25%; right: 10%; }
+.outer-hex-3 { bottom: 25%; right: 10%; }
+.outer-hex-4 { bottom: 10%; left: 50%; transform: translateX(-50%); }
+.outer-hex-5 { bottom: 25%; left: 10%; }
+.outer-hex-6 { top: 25%; left: 10%; }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .hexagon-grid {
+    width: 100%;
+    height: auto;
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+  }
+
+  .hexagon {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    --hex-size: 180px;
+  }
+
+  .center-hexagon {
+    display: none; /* Hide center hexagon on mobile */
+  }
+}
