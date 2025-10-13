@@ -1,14 +1,14 @@
 "use client"
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { 
-  Github, 
-  Linkedin, 
-  Facebook, 
-  Instagram, 
-  Download, 
+import {
+  Github,
+  Linkedin,
+  Facebook,
+  Instagram,
+  Download,
   Mail,     // ✅ keep this one
-  Phone, 
+  Phone,
   MapPin,
   ExternalLink,
   Code,
@@ -17,12 +17,12 @@ import {
   Award,
   Calendar,
   Star,
-  Home, 
-  User, 
-  Wrench, 
-  Zap, 
-  Folder,Menu,X
- 
+  Home,
+  User,
+  Wrench,
+  Zap,
+  Folder, Menu, X
+
 } from "lucide-react";
 
 
@@ -30,34 +30,34 @@ function Page() {
   const [activeSection, setActiveSection] = useState("Home");
   const [isLoaded, setIsLoaded] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Add this state
-  
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
 
-   // Update your scrollToSection function
-   const scrollToSection = (sectionName) => {
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+
+  // Update your scrollToSection function
+  const scrollToSection = (sectionName) => {
     setActiveSection(sectionName);
-    
+
     // Map section names to their IDs
     const sectionMap = {
       "Home": "home",
       "About Me": "about",
-      "Services": "services", 
+      "Services": "services",
       "Skills": "skills",
       "Portfolio": "portfolio",
       "Contact": "contact"
     };
-    
+
     const sectionId = sectionMap[sectionName];
     const element = document.getElementById(sectionId);
-    
+
     if (element) {
       element.scrollIntoView({
         behavior: 'smooth',
@@ -74,7 +74,7 @@ function Page() {
     { name: "Portfolio", icon: Folder },
     { name: "Contact", icon: Mail },
   ];
-  
+
 
   const services = [
     {
@@ -124,114 +124,112 @@ function Page() {
 
   return (
     <div className="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen w-full flex flex-row">
-      
-       {/* Mobile Navbar */}
-       <div className="md:hidden fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-200">
-          <div className="flex items-center justify-between px-4 py-3">
-            {/* Logo */}
-            <div className="flex items-center">
-              <Image 
-                src="/images/Profilelogo1.png" 
-                alt="Logo" 
-                width={120} 
-                height={50} 
-                className="h-8 w-auto"
-              />
-            </div>
-            
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6 text-gray-700" />
-              ) : (
-                <Menu className="w-6 h-6 text-gray-700" />
-              )}
-            </button>
+
+      {/* Mobile Navbar */}
+      <div className="md:hidden fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-200">
+        <div className="flex items-center justify-between px-4 py-3">
+          {/* Logo */}
+          <div className="flex items-center">
+            <Image
+              src="/images/Profilelogo1.png"
+              alt="Logo"
+              width={120}
+              height={50}
+              className="h-8 w-auto"
+            />
           </div>
-  
-          {/* Mobile Menu Dropdown */}
-          {isMobileMenuOpen && (
-            <div className="bg-white border-t border-gray-200 shadow-lg">
-              <nav className="px-4 py-2">
-                {links.map((link, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => {
-                      setActiveSection(link.name);
-                      setIsMobileMenuOpen(false);
-                      scrollToSection(link.name);
-                    }}
-                    className={`w-full p-3 px-4 rounded-xl cursor-pointer transition-all duration-300 flex items-center gap-3 mb-2 ${
-                      activeSection === link.name
-                        ? "bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg"
-                        : "text-gray-700 hover:bg-green-50 hover:text-green-700"
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6 text-gray-700" />
+            ) : (
+              <Menu className="w-6 h-6 text-gray-700" />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Menu Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="bg-white border-t border-gray-200 shadow-lg">
+            <nav className="px-4 py-2">
+              {links.map((link, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    setActiveSection(link.name);
+                    setIsMobileMenuOpen(false);
+                    scrollToSection(link.name);
+                  }}
+                  className={`w-full p-3 px-4 rounded-xl cursor-pointer transition-all duration-300 flex items-center gap-3 mb-2 ${activeSection === link.name
+                      ? "bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg"
+                      : "text-gray-700 hover:bg-green-50 hover:text-green-700"
                     }`}
-                  >
-                    <span className="text-lg">
-                      <link.icon className="w-5 h-5" />
-                    </span>
-                    <span className="font-medium">{link.name}</span>
-                  </button>
-                ))}
-              </nav>
-              
-              {/* Mobile Contact Info */}
-              <div className="px-4 py-4 bg-gray-50 border-t border-gray-200">
-                <h4 className="font-semibold text-gray-800 mb-3 text-sm">Quick Contact</h4>
-                <div className="space-y-2 text-xs">
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <Mail className="w-3 h-3" />
-                    <span>hameed@example.com</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <Phone className="w-3 h-3" />
-                    <span>+1 234 567 890</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <MapPin className="w-3 h-3" />
-                    <span>Pakistan</span>
-                  </div>
+                >
+                  <span className="text-lg">
+                    <link.icon className="w-5 h-5" />
+                  </span>
+                  <span className="font-medium">{link.name}</span>
+                </button>
+              ))}
+            </nav>
+
+            {/* Mobile Contact Info */}
+            <div className="px-4 py-4 bg-gray-50 border-t border-gray-200">
+              <h4 className="font-semibold text-gray-800 mb-3 text-sm">Quick Contact</h4>
+              <div className="space-y-2 text-xs">
+                <div className="flex items-center gap-2 text-gray-600">
+                  <Mail className="w-3 h-3" />
+                  <span>hameed@example.com</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-600">
+                  <Phone className="w-3 h-3" />
+                  <span>+1 234 567 890</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-600">
+                  <MapPin className="w-3 h-3" />
+                  <span>Pakistan</span>
                 </div>
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
+      </div>
       {/* Sidebar */}
       <div className="w-[0%] overflow-hidden md:overflow-visible md:w-[20%] fixed top-0 left-0 bg-white/80 backdrop-blur-md h-screen md:p-6 shadow-xl border-r border-gray-200 z-50">
         <div className="text-center mb-8">
-          <Image 
-            src="/images/Profilelogo1.png" 
-            alt="Logo" 
-            width={200} 
-            height={80} 
+          <Image
+            src="/images/Profilelogo1.png"
+            alt="Logo"
+            width={200}
+            height={80}
             className="mx-auto"
           />
         </div>
-        
+
         <nav className="space-y-2">
-        {links.map((link, idx) => (
-  <button
-    key={idx}
-    onClick={() => {
-      setActiveSection(link.name);
-      setIsMobileMenuOpen(false);
-      scrollToSection(link.name);
-    }}
-    className={`w-full p-3 px-4 rounded-xl cursor-pointer transition-all duration-300 flex items-center gap-3 ${
-      activeSection === link.name
-        ? "bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg transform scale-105"
-        : "text-gray-700 hover:bg-green-50 hover:text-green-700"
-    }`}
-  >
-    <span className="text-lg">
-      <link.icon className="w-5 h-5" />
-    </span>
-    <span className="font-medium">{link.name}</span>
-  </button>
-))}
+          {links.map((link, idx) => (
+            <button
+              key={idx}
+              onClick={() => {
+                setActiveSection(link.name);
+                setIsMobileMenuOpen(false);
+                scrollToSection(link.name);
+              }}
+              className={`w-full p-3 px-4 rounded-xl cursor-pointer transition-all duration-300 flex items-center gap-3 ${activeSection === link.name
+                  ? "bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg transform scale-105"
+                  : "text-gray-700 hover:bg-green-50 hover:text-green-700"
+                }`}
+            >
+              <span className="text-lg">
+                <link.icon className="w-5 h-5" />
+              </span>
+              <span className="font-medium">{link.name}</span>
+            </button>
+          ))}
 
         </nav>
 
@@ -258,68 +256,83 @@ function Page() {
       {/* Main Content */}
       <div className="md:w-[80%] w-[100%] md:ml-[20%] flex flex-col min-h-screen">
         {/* Hero Section */}
-        <section id="home" className="flex md:flex-row flex-col-reverse justify-between items-center py-20 px-8 md:px-16">
-          <div className="md:w-1/2 text-center md:text-left space-y-6">
-            <div className={`transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <h3 className="text-gray-600 text-lg font-medium"> 👋Hi, I'm Hameed</h3>
-              <h1
-                className="
-                  bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent
-                  text-4xl sm:text-5xl md:text-6xl font-extrabold 
-                  leading-tight tracking-tight 
-                "
+        <section
+  id="home"
+  className="flex md:flex-row flex-col-reverse justify-between items-center py-20 px-8 md:px-16"
 >
-  Full Stack Web
-  <br />
- <span className="text-black">Developer</span>
-</h1>
+  <div className="md:w-1/2 text-center md:text-left space-y-6">
+    <div
+      className={`transition-all duration-1000 ${
+        isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+    >
+      <h3 className="text-gray-600 text-lg font-medium">👋 Hi, I am Hameed</h3>
 
-<p className="text-gray-600 text-lg leading-relaxed max-w-lg">
-                I am a full stack web developer with a passion for creating beautiful and functional websites. 
-                Specializing in React.js, Next.js, and modern web technologies to build scalable applications 
-                that deliver exceptional user experiences.
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
-                <Download className="w-5 h-5" />
-                Download CV
-              </button>
-              <button className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-full font-semibold hover:bg-green-600 hover:text-white transition-all duration-300">
-                View Portfolio
-              </button>
-            </div>
+      <h1
+        className="
+          bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent
+          text-3xl sm:text-4xl md:text-xl font-extrabold 
+          leading-tight tracking-tight
+        "
+      >
+        Full Stack Web
+        <br />
+        <span className="text-black">Developer</span>
+      </h1>
 
-            <div className="pt-6">
-              <h4 className="text-gray-600 mb-4 font-medium">Follow Me On</h4>
-              <div className="flex gap-4 justify-center md:justify-start">
-                {socialLinks.map((social, idx) => (
-                  <a
-                    key={idx}
-                    href={social.href}
-                    className={`w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 ${social.color} transition-all duration-300 hover:scale-110 hover:text-white`}
-                  >
-                    {social.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-          
-          <div className="md:w-1/2 flex justify-center mb-8 md:mb-0">
-            <div className={`transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full blur-2xl opacity-30 animate-pulse"></div>
-                <img
-                  src="/images/profile2.png"
-                  alt="Profile"
-                  className="relative w-80 h-80 rounded-full border-4 border-white shadow-2xl object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+      <p className="text-gray-600 text-lg leading-relaxed max-w-lg">
+        I am a full stack web developer with a passion for creating beautiful and functional websites.
+        Specializing in React.js, Next.js, and modern web technologies to build scalable applications
+        that deliver exceptional user experiences.
+      </p>
+    </div>
+
+    <div className="flex flex-col sm:flex-row gap-4">
+      <button className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+        <Download className="w-5 h-5" />
+        Download CV
+      </button>
+      <button className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-full font-semibold hover:bg-green-600 hover:text-white transition-all duration-300">
+        View Portfolio
+      </button>
+    </div>
+
+    <div className="pt-6">
+      <h4 className="text-gray-600 mb-4 font-medium">Follow Me On</h4>
+      <div className="flex gap-4 justify-center md:justify-start">
+        {socialLinks.map((social, idx) => (
+          <a
+            key={idx}
+            href={social.href}
+            className={`w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 ${social.color} transition-all duration-300 hover:scale-110 hover:text-white`}
+          >
+            {social.icon}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div className="md:w-1/2 flex justify-center mb-8 md:mb-0">
+    <div
+      className={`transition-all duration-1000 delay-300 ${
+        isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+    >
+      <div className="relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full blur-2xl opacity-30 animate-pulse"></div>
+        <Image
+          src="/images/profilepic.png"
+          alt="Profile Picture"
+          className="relative w-80 h-80 rounded-full border-4 border-white shadow-2xl object-cover"
+          width={200}
+          height={200}
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
 
         {/* About Section */}
         <section id="about" className="py-20 px-8 md:px-16 bg-white/50">
@@ -330,7 +343,7 @@ function Page() {
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto rounded-full"></div>
             </div>
-            
+
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="space-y-6">
                 <p className="text-gray-600 text-lg leading-relaxed">
@@ -344,7 +357,7 @@ function Page() {
                   applications using React.js and Next.js. I have a strong understanding
                   of state management, component lifecycle, and performance optimization.
                 </p>
-                
+
                 <div className="flex gap-4">
                   <div className="flex items-center gap-2 text-gray-600">
                     <Award className="w-5 h-5 text-green-600" />
@@ -356,7 +369,7 @@ function Page() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl">
                 <h3 className="text-2xl font-bold text-gray-800 mb-6">My Expertise</h3>
                 <div className="space-y-4">
@@ -365,23 +378,23 @@ function Page() {
                     <span className="text-green-600 font-semibold">95%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full" style={{width: '95%'}}></div>
+                    <div className="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full" style={{ width: '95%' }}></div>
                   </div>
-                  
+
                   <div className="flex items-center justify-between">
                     <span className="text-gray-700">Backend Development</span>
                     <span className="text-green-600 font-semibold">85%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full" style={{width: '85%'}}></div>
+                    <div className="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full" style={{ width: '85%' }}></div>
                   </div>
-                  
+
                   <div className="flex items-center justify-between">
                     <span className="text-gray-700">UI/UX Design</span>
                     <span className="text-green-600 font-semibold">80%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full" style={{width: '80%'}}></div>
+                    <div className="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full" style={{ width: '80%' }}></div>
                   </div>
                 </div>
               </div>
@@ -395,7 +408,7 @@ function Page() {
             <div className="text-center mb-16">
               <p className="text-green-600 font-medium mb-2">Tech Stack</p>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-                Let's Explore My <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Skills</span>
+                Explore My <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Skills</span>
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto rounded-full"></div>
             </div>
@@ -410,9 +423,9 @@ function Page() {
                       <img src={skill.icon} alt={skill.name} className="w-12 h-12 mb-4 group-hover:scale-110 transition-transform duration-300" />
                       <h4 className="font-semibold text-gray-800 mb-2">{skill.name}</h4>
                       <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
-                        <div 
-                          className="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full transition-all duration-1000" 
-                          style={{width: `${skill.percent}%`}}
+                        <div
+                          className="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full transition-all duration-1000"
+                          style={{ width: `${skill.percent}%` }}
                         ></div>
                       </div>
                       <span className="text-sm font-medium text-green-600">{skill.percent}%</span>
@@ -432,9 +445,9 @@ function Page() {
                       <img src={skill.icon} alt={skill.name} className="w-12 h-12 mb-4 group-hover:scale-110 transition-transform duration-300" />
                       <h4 className="font-semibold text-gray-800 mb-2">{skill.name}</h4>
                       <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
-                        <div 
-                          className="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full transition-all duration-1000" 
-                          style={{width: `${skill.percent}%`}}
+                        <div
+                          className="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full transition-all duration-1000"
+                          style={{ width: `${skill.percent}%` }}
                         ></div>
                       </div>
                       <span className="text-sm font-medium text-green-600">{skill.percent}%</span>
@@ -455,7 +468,7 @@ function Page() {
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto rounded-full"></div>
             </div>
-            
+
             <div className="grid md:grid-cols-3 gap-8">
               {services.map((service, idx) => (
                 <div key={idx} className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
@@ -470,8 +483,8 @@ function Page() {
           </div>
         </section>
 
-          {/* Portfolio Section */}
-          <section id="portfolio" className="py-20 px-8 md:px-16">
+        {/* Portfolio Section */}
+        <section id="portfolio" className="py-20 px-8 md:px-16">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <p className="text-green-600 font-medium mb-2">My Work</p>
@@ -487,11 +500,10 @@ function Page() {
                 {['All', 'Web App', 'Mobile App', 'UI/UX', 'E-commerce'].map((filter, idx) => (
                   <button
                     key={idx}
-                    className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                      idx === 0 
+                    className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${idx === 0
                         ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg'
                         : 'text-gray-600 hover:bg-green-50 hover:text-green-700'
-                    }`}
+                      }`}
                   >
                     {filter}
                   </button>
@@ -711,7 +723,7 @@ function Page() {
             <div className="text-center mb-16">
               <p className="text-green-600 font-medium mb-2">Get In Touch</p>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-                Let's <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Connect</span>
+                <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Connect width Me!</span>
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto rounded-full"></div>
             </div>
@@ -854,18 +866,19 @@ function Page() {
         <footer className="bg-gray-800 text-white py-12 px-8 md:px-16">
           <div className="max-w-6xl mx-auto text-center">
             <div className="mb-8">
-              <Image 
-                src="/images/Profilelogo1.png" 
-                alt="Logo" 
-                width={200} 
-                height={80} 
+              <Image
+                src="/images/Profilelogo1.png"
+                alt="Logo"
+
+                width={100}
+                height={100}
                 className="mx-auto mb-4"
               />
               <p className="text-gray-300 text-lg max-w-2xl mx-auto">
                 A passionate React.js and Next.js developer dedicated to creating exceptional web experiences.
               </p>
             </div>
-            
+
             <div className="flex justify-center gap-6 mb-8">
               {socialLinks.map((social, idx) => (
                 <a
@@ -877,7 +890,7 @@ function Page() {
                 </a>
               ))}
             </div>
-            
+
             <div className="border-t border-gray-700 pt-8">
               <p className="text-gray-400">
                 © 2024 Hameed Gul. All rights reserved.
@@ -887,7 +900,7 @@ function Page() {
         </footer>
       </div>
     </div>
-  
+
   );
 }
 
