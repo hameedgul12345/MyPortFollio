@@ -25,6 +25,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import Link from "next/link";
 
 function Page() {
   const [activeSection, setActiveSection] = useState("Home");
@@ -138,76 +139,75 @@ function Page() {
     },
     {
       name: "Express.js",
-      percent: 87,
-      icon: "https://img.icons8.com/ios-filled/50/000000/express-js.png",
+      percent: 90,
+      icon: "/images/express.svg",
     },
     {
       name: "MongoDB",
-      percent: 82,
+      percent: 90,
       icon: "https://img.icons8.com/color/48/mongodb.png",
     },
     {
       name: "MySQL",
-      percent: 78,
+      percent: 75,
       icon: "https://img.icons8.com/fluency/48/mysql-logo.png",
     },
     {
       name: "REST API",
-      percent: 90,
-      icon: "https://img.icons8.com/external-flat-icons-inmotus-design/67/external-api-digital-marketing-flat-icons-inmotus-design.png",
+      percent: 100,
+      icon: "/images/restAPI.png",
     },
     {
       name: "JWT Auth",
-      percent: 85,
-      icon: "/images/jwt",
+      percent: 100,
+      icon: "/images/jwt.png",
     },
   ];
 
-const fullStackApps = [
-  {
-    image: "/images/chatly.png",
-    title: "Chatly – Real-Time Chat App",
-    paragraph:
-      "A modern chat application built with MERN stack and Socket.IO for real-time messaging, media sharing, and group chats.",
-    tech: ["React", "Node.js", "MongoDB", "Socket.IO"],
-  },
-  {
-    image: "/images/ecommerce.png",
-    title: "ShopEase – E-commerce Platform",
-    paragraph:
-      "A full-stack e-commerce app built with React, Node.js, and MongoDB, featuring authentication, payment integration, and product management.",
-    tech: ["React", "Node.js", "MongoDB", "Stripe"],
-  },
-  {
-    image: "/images/taskapp.png",
-    title: "TaskFlow – Project Management App",
-    paragraph:
-      "Collaborative project manager with Kanban boards, drag-and-drop tasks, and team chat built using Next.js and Prisma.",
-    tech: ["Next.js", "TypeScript", "Prisma", "Socket.IO"],
-  },
-  {
-    image: "/images/socialapp.png",
-    title: "ConnectHub – Social Media Dashboard",
-    paragraph:
-      "A social dashboard for analytics and post scheduling with D3.js data visualizations and PostgreSQL backend.",
-    tech: ["React", "D3.js", "Express", "PostgreSQL"],
-  },
-  {
-    image: "/images/weatherapp.png",
-    title: "WeatherNow – Forecast App",
-    paragraph:
-      "Weather application using OpenWeather API for location-based forecasts and interactive maps.",
-    tech: ["React Native", "OpenWeather API", "Redux", "Firebase"],
-  },
-  {
-    image: "/images/aichat.png",
-    title: "AI Chat Assistant",
-    paragraph:
-      "An intelligent AI chatbot powered by machine learning with natural language understanding and FastAPI backend.",
-    tech: ["Python", "TensorFlow", "React", "FastAPI"],
-  },
-];
-
+  const fullStackApps = [
+    {
+      image: "/images/chatly.png",
+      title: "Chatly – Real-Time Chat App",
+      paragraph:
+        "A modern chat application built with MERN stack and Socket.IO for real-time messaging, media sharing, and group chats.",
+      tech: ["React", "Node.js", "MongoDB", "Socket.IO"],
+    },
+    {
+      image: "/images/ecommerce.png",
+      title: "ShopEase – E-commerce Platform",
+      paragraph:
+        "A full-stack e-commerce app built with React, Node.js, and MongoDB, featuring authentication, payment integration, and product management.",
+      tech: ["React", "Node.js", "MongoDB", "Stripe"],
+    },
+    {
+      image: "/images/taskapp.png",
+      title: "TaskFlow – Project Management App",
+      paragraph:
+        "Collaborative project manager with Kanban boards, drag-and-drop tasks, and team chat built using Next.js and Prisma.",
+      tech: ["Next.js", "TypeScript", "Prisma", "Socket.IO"],
+    },
+    {
+      image: "/images/socialapp.png",
+      title: "ConnectHub – Social Media Dashboard",
+      paragraph:
+        "A social dashboard for analytics and post scheduling with D3.js data visualizations and PostgreSQL backend.",
+      tech: ["React", "D3.js", "Express", "PostgreSQL"],
+    },
+    {
+      image: "/images/weatherapp.png",
+      title: "WeatherNow – Forecast App",
+      paragraph:
+        "Weather application using OpenWeather API for location-based forecasts and interactive maps.",
+      tech: ["React Native", "OpenWeather API", "Redux", "Firebase"],
+    },
+    {
+      image: "/images/aichat.png",
+      title: "AI Chat Assistant",
+      paragraph:
+        "An intelligent AI chatbot powered by machine learning with natural language understanding and FastAPI backend.",
+      tech: ["Python", "TensorFlow", "React", "FastAPI"],
+    },
+  ];
 
   const socialLinks = [
     {
@@ -372,7 +372,7 @@ const fullStackApps = [
           id="home"
           className="flex md:flex-row flex-col-reverse justify-between items-center py-20 px-8 md:px-16"
         >
-          <div className="md:w-1/2 text-center md:text-left space-y-6">
+          <div className="md:w-1/2 text-center border-yellow md:text-left space-y-6">
             <div
               className={`transition-all duration-1000 ${
                 isLoaded
@@ -714,53 +714,64 @@ const fullStackApps = [
               </div>
             </div>
 
-            
-             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {fullStackApps.map((app, index) => (
-        <div
-          key={index}
-          className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
-        >
-          <div className="relative overflow-hidden">
-            <Image
-              src={app.image}
-              alt={app.title}
-              width={500}
-              height={300}
-              className="w-full h-48 object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <div className="flex gap-4">
-                <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
-                  <ExternalLink className="w-5 h-5" />
-                </button>
-                <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
-                  <Github className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-2">
-              {app.title}
-            </h3>
-            <p className="text-gray-600 text-sm mb-4">{app.paragraph}</p>
-            <div className="flex flex-wrap gap-2">
-              {app.tech.map((tech, idx) => (
-                <span
-                  key={idx}
-                  className="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium"
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {fullStackApps.map((app, index) => (
+                <div
+                  key={index}
+                  className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
                 >
-                  {tech}
-                </span>
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src={app.image}
+                      alt={app.title}
+                      width={500}
+                      height={300}
+                      className="w-full h-48 object-cover"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="flex gap-4">
+                        <Link
+                          href="https://chattochatly4.netlify.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
+                            <ExternalLink className="w-5 h-5" />
+                          </button>
+                        </Link>
+                       <Link href="https://github.com/hameedgul12345/Chatly"
+                          target="_blank"
+                          rel="noopener noreferrer" >
+                        <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
+                          <Github className="w-5 h-5" />
+                        </button>
+                       </Link>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">
+                      {app.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-4">
+                      {app.paragraph}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {app.tech.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               ))}
             </div>
-          </div>
-        </div>
-      ))}
-    </div>
 
             {/* View More Button */}
             <div className="text-center mt-12">
@@ -771,7 +782,7 @@ const fullStackApps = [
             </div>
           </div>
         </section>
-      
+
         {/* Contact Section */}
         <section id="contact" className="py-20 px-8 md:px-16 bg-white/50">
           <div className="max-w-6xl mx-auto">
