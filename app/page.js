@@ -168,6 +168,8 @@ function Page() {
     {
       image: "/images/chatly.png",
       title: "Chatly – Real-Time Chat App",
+      hostLink:"https://chattochatly4.netlify.app/",
+      githubLink:"https://github.com/hameedgul12345/Chatly",
       paragraph:
         "A modern chat application built with MERN stack and Socket.IO for real-time messaging, media sharing, and group chats.",
       tech: ["React", "Node.js", "MongoDB", "Socket.IO"],
@@ -175,6 +177,8 @@ function Page() {
     {
       image: "/images/ecommerce.png",
       title: "ShopEase – E-commerce Platform",
+        hostLink:"https://chattochatly4.netlify.app/",
+      githubLink:"https://github.com/hameedgul12345/Chatly",
       paragraph:
         "A full-stack e-commerce app built with React, Node.js, and MongoDB, featuring authentication, payment integration, and product management.",
       tech: ["React", "Node.js", "MongoDB", "Stripe"],
@@ -182,6 +186,8 @@ function Page() {
     {
       image: "/images/taskapp.png",
       title: "TaskFlow – Project Management App",
+        hostLink:"https://chattochatly4.netlify.app/",
+      githubLink:"https://github.com/hameedgul12345/Chatly",
       paragraph:
         "Collaborative project manager with Kanban boards, drag-and-drop tasks, and team chat built using Next.js and Prisma.",
       tech: ["Next.js", "TypeScript", "Prisma", "Socket.IO"],
@@ -189,6 +195,8 @@ function Page() {
     {
       image: "/images/socialapp.png",
       title: "ConnectHub – Social Media Dashboard",
+        hostLink:"https://chattochatly4.netlify.app/",
+      githubLink:"https://github.com/hameedgul12345/Chatly",
       paragraph:
         "A social dashboard for analytics and post scheduling with D3.js data visualizations and PostgreSQL backend.",
       tech: ["React", "D3.js", "Express", "PostgreSQL"],
@@ -196,6 +204,8 @@ function Page() {
     {
       image: "/images/weatherapp.png",
       title: "WeatherNow – Forecast App",
+        hostLink:"https://chattochatly4.netlify.app/",
+      githubLink:"https://github.com/hameedgul12345/Chatly",
       paragraph:
         "Weather application using OpenWeather API for location-based forecasts and interactive maps.",
       tech: ["React Native", "OpenWeather API", "Redux", "Firebase"],
@@ -203,6 +213,8 @@ function Page() {
     {
       image: "/images/aichat.png",
       title: "AI Chat Assistant",
+        hostLink:"https://chattochatly4.netlify.app/",
+      githubLink:"https://github.com/hameedgul12345/Chatly",
       paragraph:
         "An intelligent AI chatbot powered by machine learning with natural language understanding and FastAPI backend.",
       tech: ["Python", "TensorFlow", "React", "FastAPI"],
@@ -732,7 +744,7 @@ function Page() {
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <div className="flex gap-4">
                         <Link
-                          href="https://chattochatly4.netlify.app/"
+                          href={app.hostLink}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -740,7 +752,7 @@ function Page() {
                             <ExternalLink className="w-5 h-5" />
                           </button>
                         </Link>
-                       <Link href="https://github.com/hameedgul12345/Chatly"
+                       <Link href={app.githubLink}
                           target="_blank"
                           rel="noopener noreferrer" >
                         <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
