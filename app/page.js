@@ -114,11 +114,7 @@ function Page() {
       percent: 90,
       icon: "https://img.icons8.com/color/48/javascript.png",
     },
-    {
-      name: "React",
-      percent: 92,
-      icon: "https://img.icons8.com/color/48/react-native.png",
-    },
+   
     {
       name: "Tailwind",
       percent: 88,
@@ -128,6 +124,21 @@ function Page() {
       name: "Bootstrap",
       percent: 85,
       icon: "https://img.icons8.com/color/48/bootstrap.png",
+    },
+     {
+      name: "ShadCN",
+      percent: 92,
+      icon: "/images/shadcn.png",
+    },
+     {
+      name: "ReactJS",
+      percent: 92,
+      icon: "https://img.icons8.com/color/48/react-native.png",
+    },
+     {
+      name: "NextJS",
+      percent: 92,
+      icon: "https://img.icons8.com/color/48/nextjs.png",
     },
   ];
 
@@ -165,61 +176,62 @@ function Page() {
   ];
 
   const fullStackApps = [
-    {
-      image: "/images/chatly.png",
-      title: "Chatly – Real-Time Chat App",
-      hostLink:"https://chattochatly4.netlify.app/",
-      githubLink:"https://github.com/hameedgul12345/Chatly",
-      paragraph:
-        "A modern chat application built with MERN stack and Socket.IO for real-time messaging, media sharing, and group chats.",
-      tech: ["React", "Node.js", "MongoDB", "Socket.IO"],
-    },
-    {
-      image: "/images/ecommerce.png",
-      title: "ShopEase – E-commerce Platform",
-        hostLink:"https://chattochatly4.netlify.app/",
-      githubLink:"https://github.com/hameedgul12345/Chatly",
-      paragraph:
-        "A full-stack e-commerce app built with React, Node.js, and MongoDB, featuring authentication, payment integration, and product management.",
-      tech: ["React", "Node.js", "MongoDB", "Stripe"],
-    },
-    {
-      image: "/images/taskapp.png",
-      title: "TaskFlow – Project Management App",
-        hostLink:"https://chattochatly4.netlify.app/",
-      githubLink:"https://github.com/hameedgul12345/Chatly",
-      paragraph:
-        "Collaborative project manager with Kanban boards, drag-and-drop tasks, and team chat built using Next.js and Prisma.",
-      tech: ["Next.js", "TypeScript", "Prisma", "Socket.IO"],
-    },
-    {
-      image: "/images/socialapp.png",
-      title: "ConnectHub – Social Media Dashboard",
-        hostLink:"https://chattochatly4.netlify.app/",
-      githubLink:"https://github.com/hameedgul12345/Chatly",
-      paragraph:
-        "A social dashboard for analytics and post scheduling with D3.js data visualizations and PostgreSQL backend.",
-      tech: ["React", "D3.js", "Express", "PostgreSQL"],
-    },
-    {
-      image: "/images/weatherapp.png",
-      title: "WeatherNow – Forecast App",
-        hostLink:"https://chattochatly4.netlify.app/",
-      githubLink:"https://github.com/hameedgul12345/Chatly",
-      paragraph:
-        "Weather application using OpenWeather API for location-based forecasts and interactive maps.",
-      tech: ["React Native", "OpenWeather API", "Redux", "Firebase"],
-    },
-    {
-      image: "/images/aichat.png",
-      title: "AI Chat Assistant",
-        hostLink:"https://chattochatly4.netlify.app/",
-      githubLink:"https://github.com/hameedgul12345/Chatly",
-      paragraph:
-        "An intelligent AI chatbot powered by machine learning with natural language understanding and FastAPI backend.",
-      tech: ["Python", "TensorFlow", "React", "FastAPI"],
-    },
-  ];
+  {
+    image: "/images/chatly.png",
+    title: "Chatly – Real-Time Chat App",
+    hostLink: "https://chattochatly4.netlify.app/",
+    githubLink: "https://github.com/hameedgul12345/Chatly",
+    paragraph:
+      "A modern chat application built with the MERN stack and Socket.IO, featuring real-time messaging, media sharing, and group chats.",
+    tech: ["React", "Node.js", "MongoDB", "Socket.IO"],
+  },
+  {
+    image: "/images/vibeo.png",
+    title: "Vibeo – Social Media Platform",
+    hostLink: "https://vibeo1.netlify.app/",
+    githubLink: "https://github.com/hameedgul12345/Vibeo",
+    paragraph:
+      "A full-stack social media platform built with React, Node.js, and MongoDB, featuring user authentication, post creation, and interactive feeds.",
+    tech: ["React", "Node.js", "MongoDB", "JWT/Auth"],
+  },
+  {
+    image: "/images/taskapp.png",
+    title: "TaskFlow – Project Management App",
+    hostLink: "https://chattochatly4.netlify.app/",
+    githubLink: "https://github.com/hameedgul12345/Chatly",
+    paragraph:
+      "Collaborative project manager with Kanban boards, drag-and-drop tasks, and team chat, built using Next.js, TypeScript, and Prisma.",
+    tech: ["Next.js", "TypeScript", "Prisma", "Socket.IO"],
+  },
+  {
+    image: "/images/socialapp.png",
+    title: "ConnectHub – Social Media Dashboard",
+    hostLink: "https://chattochatly4.netlify.app/",
+    githubLink: "https://github.com/hameedgul12345/Chatly",
+    paragraph:
+      "A social media analytics dashboard for post scheduling and insights, featuring D3.js visualizations and a PostgreSQL backend.",
+    tech: ["React", "D3.js", "Express", "PostgreSQL"],
+  },
+  {
+    image: "/images/weatherapp.png",
+    title: "WeatherNow – Forecast App",
+    hostLink: "https://chattochatly4.netlify.app/",
+    githubLink: "https://github.com/hameedgul12345/Chatly",
+    paragraph:
+      "A weather application using OpenWeather API for location-based forecasts, interactive maps, and real-time updates.",
+    tech: ["React Native", "OpenWeather API", "Redux", "Firebase"],
+  },
+  {
+    image: "/images/aichat.png",
+    title: "AI Chat Assistant",
+    hostLink: "https://chattochatly4.netlify.app/",
+    githubLink: "https://github.com/hameedgul12345/Chatly",
+    paragraph:
+      "An intelligent AI chatbot powered by machine learning, with natural language understanding and FastAPI backend.",
+    tech: ["Python", "TensorFlow", "React", "FastAPI"],
+  },
+];
+
 
   const socialLinks = [
     {
@@ -479,28 +491,21 @@ function Page() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="space-y-6">
                 <p className="text-gray-600 text-lg leading-relaxed">
-                  I am Hameed Gul, a dedicated React.js and Next.js developer
-                  with a strong passion for building high-quality web
-                  applications. With a solid foundation in JavaScript and a keen
-                  eye for design, I strive to create seamless user experiences.
+                  I am Hameed Gul, a passionate Full-Stack Developer
+                  specializing in React.js and Next.js. I enjoy building
+                  high-quality, responsive web applications with seamless user
+                  experiences, combining strong JavaScript skills with a keen
+                  eye for design.
                 </p>
                 <p className="text-gray-600 text-lg leading-relaxed">
-                  My expertise includes developing responsive and interactive
-                  web applications using React.js and Next.js. I have a strong
-                  understanding of state management, component lifecycle, and
-                  performance optimization.
+                  My expertise includes developing interactive web applications,
+                  managing state efficiently, optimizing performance, and
+                  leveraging modern web technologies to deliver scalable and
+                  maintainable solutions. I strive to create applications that
+                  are both functional and visually appealing.
                 </p>
 
-                <div className="flex gap-4">
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <Award className="w-5 h-5 text-green-600" />
-                    <span>5+ Years Experience</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <Star className="w-5 h-5 text-green-600" />
-                    <span>50+ Projects</span>
-                  </div>
-                </div>
+               
               </div>
 
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl">
@@ -564,7 +569,7 @@ function Page() {
               <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">
                 Frontend Technologies
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {frontendSkills.map((skill, i) => (
                   <div
                     key={i}
@@ -599,7 +604,7 @@ function Page() {
               <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">
                 Backend Technologies
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {backendSkills.map((skill, i) => (
                   <div
                     key={i}
@@ -752,13 +757,15 @@ function Page() {
                             <ExternalLink className="w-5 h-5" />
                           </button>
                         </Link>
-                       <Link href={app.githubLink}
+                        <Link
+                          href={app.githubLink}
                           target="_blank"
-                          rel="noopener noreferrer" >
-                        <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
-                          <Github className="w-5 h-5" />
-                        </button>
-                       </Link>
+                          rel="noopener noreferrer"
+                        >
+                          <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
+                            <Github className="w-5 h-5" />
+                          </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
