@@ -179,7 +179,7 @@ function Page() {
   {
     image: "/images/chatly.png",
     title: "Chatly – Real-Time Chat App",
-    hostLink: "https://chattochatly4.netlify.app/",
+    hostLink: "https://chattochatly.netlify.app/",
     githubLink: "https://github.com/hameedgul12345/Chatly",
     paragraph:
       "A modern chat application built with the MERN stack and Socket.IO, featuring real-time messaging, media sharing, and group chats.",
