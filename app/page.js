@@ -114,7 +114,7 @@ function Page() {
       percent: 90,
       icon: "https://img.icons8.com/color/48/javascript.png",
     },
-   
+
     {
       name: "Tailwind",
       percent: 88,
@@ -125,17 +125,17 @@ function Page() {
       percent: 85,
       icon: "https://img.icons8.com/color/48/bootstrap.png",
     },
-     {
+    {
       name: "ShadCN",
       percent: 92,
       icon: "/images/shadcn.png",
     },
-     {
+    {
       name: "ReactJS",
       percent: 92,
       icon: "https://img.icons8.com/color/48/react-native.png",
     },
-     {
+    {
       name: "NextJS",
       percent: 92,
       icon: "https://img.icons8.com/color/48/nextjs.png",
@@ -176,62 +176,61 @@ function Page() {
   ];
 
   const fullStackApps = [
-  {
-    image: "/images/chatly.png",
-    title: "Chatly – Real-Time Chat App",
-    hostLink: "https://chattochatly.netlify.app/",
-    githubLink: "https://github.com/hameedgul12345/Chatly",
-    paragraph:
-      "A modern chat application built with the MERN stack and Socket.IO, featuring real-time messaging, media sharing, and group chats.",
-    tech: ["React", "Node.js", "MongoDB", "Socket.IO"],
-  },
-  {
-    image: "/images/vibeo.png",
-    title: "Vibeo – Social Media Platform",
-    hostLink: "https://vibeo1.netlify.app/",
-    githubLink: "https://github.com/hameedgul12345/Vibeo",
-    paragraph:
-      "A full-stack social media platform built with React, Node.js, and MongoDB, featuring user authentication, post creation, and interactive feeds.",
-    tech: ["React", "Node.js", "MongoDB", "JWT/Auth"],
-  },
-  {
-    image: "/images/taskapp.png",
-    title: "TaskFlow – Project Management App",
-    hostLink: "https://chattochatly4.netlify.app/",
-    githubLink: "https://github.com/hameedgul12345/Chatly",
-    paragraph:
-      "Collaborative project manager with Kanban boards, drag-and-drop tasks, and team chat, built using Next.js, TypeScript, and Prisma.",
-    tech: ["Next.js", "TypeScript", "Prisma", "Socket.IO"],
-  },
-  {
-    image: "/images/socialapp.png",
-    title: "ConnectHub – Social Media Dashboard",
-    hostLink: "https://chattochatly4.netlify.app/",
-    githubLink: "https://github.com/hameedgul12345/Chatly",
-    paragraph:
-      "A social media analytics dashboard for post scheduling and insights, featuring D3.js visualizations and a PostgreSQL backend.",
-    tech: ["React", "D3.js", "Express", "PostgreSQL"],
-  },
-  {
-    image: "/images/weatherapp.png",
-    title: "WeatherNow – Forecast App",
-    hostLink: "https://chattochatly4.netlify.app/",
-    githubLink: "https://github.com/hameedgul12345/Chatly",
-    paragraph:
-      "A weather application using OpenWeather API for location-based forecasts, interactive maps, and real-time updates.",
-    tech: ["React Native", "OpenWeather API", "Redux", "Firebase"],
-  },
-  {
-    image: "/images/aichat.png",
-    title: "AI Chat Assistant",
-    hostLink: "https://chattochatly4.netlify.app/",
-    githubLink: "https://github.com/hameedgul12345/Chatly",
-    paragraph:
-      "An intelligent AI chatbot powered by machine learning, with natural language understanding and FastAPI backend.",
-    tech: ["Python", "TensorFlow", "React", "FastAPI"],
-  },
-];
-
+    {
+      image: "/images/chatly.png",
+      title: "Chatly – Real-Time Chat App",
+      hostLink: "https://chattochatly.netlify.app/",
+      githubLink: "https://github.com/hameedgul12345/Chatly",
+      paragraph:
+        "A modern chat application built with the MERN stack and Socket.IO, featuring real-time messaging, media sharing, and group chats.",
+      tech: ["React", "Node.js", "MongoDB", "Socket.IO"],
+    },
+    {
+      image: "/images/vibeo.png",
+      title: "Vibeo – Social Media Platform",
+      hostLink: "https://vibeo1.netlify.app/",
+      githubLink: "https://github.com/hameedgul12345/Vibeo",
+      paragraph:
+        "A full-stack social media platform built with React, Node.js, and MongoDB, featuring user authentication, post creation, and interactive feeds.",
+      tech: ["React", "Node.js", "MongoDB", "JWT/Auth"],
+    },
+    {
+      image: "/images/taskapp.png",
+      title: "TaskFlow – Project Management App",
+      hostLink: "https://chattochatly4.netlify.app/",
+      githubLink: "https://github.com/hameedgul12345/Chatly",
+      paragraph:
+        "Collaborative project manager with Kanban boards, drag-and-drop tasks, and team chat, built using Next.js, TypeScript, and Prisma.",
+      tech: ["Next.js", "TypeScript", "Prisma", "Socket.IO"],
+    },
+    {
+      image: "/images/socialapp.png",
+      title: "ConnectHub – Social Media Dashboard",
+      hostLink: "https://chattochatly4.netlify.app/",
+      githubLink: "https://github.com/hameedgul12345/Chatly",
+      paragraph:
+        "A social media analytics dashboard for post scheduling and insights, featuring D3.js visualizations and a PostgreSQL backend.",
+      tech: ["React", "D3.js", "Express", "PostgreSQL"],
+    },
+    {
+      image: "/images/weatherapp.png",
+      title: "WeatherNow – Forecast App",
+      hostLink: "https://chattochatly4.netlify.app/",
+      githubLink: "https://github.com/hameedgul12345/Chatly",
+      paragraph:
+        "A weather application using OpenWeather API for location-based forecasts, interactive maps, and real-time updates.",
+      tech: ["React Native", "OpenWeather API", "Redux", "Firebase"],
+    },
+    {
+      image: "/images/aichat.png",
+      title: "AI Chat Assistant",
+      hostLink: "https://chattochatly4.netlify.app/",
+      githubLink: "https://github.com/hameedgul12345/Chatly",
+      paragraph:
+        "An intelligent AI chatbot powered by machine learning, with natural language understanding and FastAPI backend.",
+      tech: ["Python", "TensorFlow", "React", "FastAPI"],
+    },
+  ];
 
   const socialLinks = [
     {
@@ -394,7 +393,7 @@ function Page() {
         {/* Hero Section */}
         <section
           id="home"
-          className="flex md:flex-row flex-col-reverse justify-between items-center py-20 px-8 md:px-16"
+          className="flex md:flex-row flex-col-reverse justify-between items-center md:py-12 py-20 px-8 md:px-16"
         >
           <div className="md:w-1/2 text-center border-yellow md:text-left space-y-6">
             <div
@@ -405,47 +404,54 @@ function Page() {
               }`}
             >
               <h3 className="text-gray-600 text-lg font-medium">
-                👋 Hi, I am Hameed
+                Hi, I am Hameed
               </h3>
 
               <h1
                 className="
-          bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent
-          text-3xl sm:text-4xl md:text-xl font-extrabold 
-          leading-tight tracking-tight
+           bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent
+    text-xl sm:text-2xl md:text-3xl font-extrabold 
+    
         "
               >
-                Full Stack Web
+                Full Stack Web Developer
                 <br />
-                <span className="text-black">Developer</span>
+                <span className="text-black text-lg font-semibold">
+                  building scalable modern applications
+                </span>
               </h1>
 
               <p className="text-gray-600 text-lg leading-relaxed max-w-lg">
-                I am a full stack web developer with a passion for creating
-                beautiful and functional websites. Specializing in React.js,
-                Next.js, and modern web technologies to build scalable
-                applications that deliver exceptional user experiences.
+                I build fast, scalable, and user-friendly web applications using
+                <span className="font-medium text-gray-800">
+                  {" "}
+                  React, Next.js, and modern web technologies
+                </span>
+                . Focused on performance, clean code, and great user experience.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
-                <Download className="w-5 h-5" />
-                Download CV
-              </button>
-              <button className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-full font-semibold hover:bg-green-600 hover:text-white transition-all duration-300">
+              <button className="border-2 border-green-600 text-green-600 px-4 py-2 rounded-full font-semibold hover:bg-green-600 hover:text-white transition-all duration-300">
                 View Portfolio
+              </button>
+              <button className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-2 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+                {/* <Download className="w-5 h-5" /> */}
+                Download CV
               </button>
             </div>
 
-            <div className="pt-6">
+            <div className="pt-2">
               <h4 className="text-gray-600 mb-4 font-medium">Follow Me On</h4>
               <div className="flex gap-4 justify-center md:justify-start">
                 {socialLinks.map((social, idx) => (
                   <a
                     key={idx}
                     href={social.href}
-                    className={`w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 ${social.color} transition-all duration-300 hover:scale-110 hover:text-white`}
+                    className={`w-12 h-12 bg-white rounded-full shadow-lg 
+flex items-center justify-center text-gray-600 
+${social.color} transition-all duration-300 
+hover:scale-110 hover:-translate-y-1 hover:text-white`}
                   >
                     {social.icon}
                   </a>
@@ -475,6 +481,8 @@ function Page() {
             </div>
           </div>
         </section>
+        {/* Hero Section */}
+
         {/* About Section */}
         <section id="about" className="py-20 px-8 md:px-16 bg-white/50">
           <div className="max-w-6xl mx-auto">
@@ -504,8 +512,6 @@ function Page() {
                   maintainable solutions. I strive to create applications that
                   are both functional and visually appealing.
                 </p>
-
-               
               </div>
 
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl">
@@ -809,7 +815,7 @@ function Page() {
               <p className="text-green-600 font-medium mb-2">Get In Touch</p>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
                 <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-                  Connect width Me!
+                  Connect with Me!
                 </span>
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto rounded-full"></div>
