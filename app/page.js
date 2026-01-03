@@ -417,7 +417,7 @@ function Page() {
                 Full Stack Web Developer
                 <br />
                 <span className="text-black text-lg font-semibold">
-                  building scalable modern applications
+                  Building scalable modern applications
                 </span>
               </h1>
 
