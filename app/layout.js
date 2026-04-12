@@ -1,31 +1,23 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import 'remixicon/fonts/remixicon.css'
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Providers from "./providers";
 
 export const metadata = {
-  title: "developerhameedg",
-  description: "FullStack Developer",
- icon: "/images/chatly.png",
+  title: "Hameed Gul | Full Stack Developer",
+  description:
+    "Portfolio of Hameed Gul - Full Stack MERN & Next.js Developer",
+  keywords: ["Next.js", "React", "Full Stack Developer", "MERN"],
+  openGraph: {
+    title: "Hameed Gul Portfolio",
+    description: "Full Stack Developer Portfolio",
+    type: "website",
+  },
 };
-
-
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
